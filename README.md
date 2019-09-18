@@ -3,4 +3,4 @@ A  basic 6-DOF manipulator simulation platform using ROS-Gazrbo-Moveit. (for com
 
 I'll upload the instruction document later.
 
-![Image text](https://github.com/lindaqqiu/m_mh24/blob/master/m_mh24/images/moveit.png)
+![Image text](https://github.com/lindaqqiu/blob/master/m_mh24/image/moveit.pngg)
