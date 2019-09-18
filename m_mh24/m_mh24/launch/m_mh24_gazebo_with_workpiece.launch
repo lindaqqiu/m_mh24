@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="paused" default="true"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gazebo_gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  <arg name="pipeline" default="ompl" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="$(arg paused)"/>
+    <!--arg name="world_name" value="$(find m_mh24)/worlds/m_mh24.world"/-->
+     <arg name="gui" value="$(arg gazebo_gui)"/>
+  </include>
+
+  <node
+    name="tf_footprint_base"
+    pkg="tf"
+    type="static_transform_publisher"
+    args="0 0 0 0 0 0 world base_footprint 40" />
+
+  <!-- send robot urdf to param server -->
+  <include file="$(find m_mh24)/launch/m_mh24_upload.launch"/>
+
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node 
+    name="spawn_gazebo_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-urdf -param robot_description -model robot"
+    respawn="false"
+    output="screen" />
+
+  <node
+    name="spawn_gazebo_model2"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-urdf -file $(find m_mh24)/urdf/workpiece.urdf -model workpiece -x 2.1 -y 0 -z 0"
+    respawn="false"
+    output="screen" />
+
+  <!-- set pid parameters in gazebo_ros_controller-->
+  <rosparam ns="/m_mh24" command="load" file="$(find m_mh24)/config/gazebo_pid_gains.yaml" /> 
+
+  <!-- Fake Calibration 
+  <node pkg="rostopic" type="rostopic" name="fake_joint_calibration" args="pub /calibrated std_msgs/Bool true" /> -->
+
+  <!-- joint_state_controller(publish joint states to m_mh24/joint_states topic) and arm_position_controller(use command: rostopic pub /arm_position_controller/command std_msgs/Float64MultiArray '{data: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]}' to control the joints in gazebo)--> 
+  <rosparam ns="/m_mh24" file="$(find m_mh24)/config/joint_state_controller.yaml" command="load"/>
+  <node 
+    ns="/m_mh24" 
+    name="joint_state_controller_spawner"
+    pkg="controller_manager"
+    type="spawner"
+    respawn="false"
+    output="screen"
+    args="joint_state_controller"/>
+      <!--arm_position_controller-->
+  
+  <!-- Robot state publisher(publish the tf information to ros parameter service) -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+    <param name="publish_frequency" type="double" value="50.0" />
+    <remap from="/robot_states" to="/m_mh24/robot_states" />
+    <param name="tf_prefix" type="string" value="" />
+  </node>
+
+  <!-- joint trajectory controller -->
+  <rosparam file="$(find m_mh24_gazebo)/config/joint_trajectory_controller.yaml" command="load"/>
+  <node 
+    ns="/m_mh24"
+    name="trajectory_controller_spawner"
+    pkg="controller_manager"
+    type="spawner"
+    respawn="false"
+    output="screen"
+    args="arm_trajectory_controller"/>
+  
+  <!-- relay to /joint_states -->
+  <node ns="m_mh24" name="joint_state_relay" pkg="topic_tools" type="relay" args="/joint_states /m_mh24/joint_states "/>
+
+</launch>

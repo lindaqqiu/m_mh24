@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<robot name="rotating_kinect" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find m_mh24)/urdf/kinect.urdf.xacro"/>
+  <xacro:property name="b_h" value="0.2"/>
+  <xacro:property name="p_h" value="0.1"/>
+<!--rotating platform-->
+  <link name="world"/>
+  <joint name="world_joint" type="fixed">
+    <origin xyz="0.55 0 ${b_h*0.5}" rpy="0 0 0"/>
+    <parent link="world"/>
+    <child link="base_link" />
+  </joint>
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="${b_h}" radius="0.1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  	<geometry>
+  	  <cylinder length="${b_h}" radius="0.1"/>
+  	</geometry>
+    </collision>
+    <inertial>
+      <mass value="1" />
+      <inertia ixx="0.00583" ixy="0.0" ixz="0.0" iyy="0.00583" iyz="0.0" izz="0.005" />
+    </inertial>
+  </link>
+  <joint name="rotating_joint" type="revolute">
+    <origin
+      xyz="0 0 ${b_h*0.5+p_h*0.5}"
+      rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="rotating_platform" />
+    <axis xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="1000"
+      velocity="5" />
+    <dynamics
+      damping="1" 
+      friction="10"/>
+  </joint>
+  <link name="rotating_platform">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="${p_h}" radius="0.15"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <geometry>
+  	<cylinder length="${p_h}" radius="0.15"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1" />
+      <inertia ixx="0.00646" ixy="0.0" ixz="0.0" iyy="0.00646" iyz="0.0" izz="0.01125" />
+    </inertial>
+  </link>
+  <sensor_kinect  parent="rotating_platform"/>
+
+<!-- ros_control plugin -->
+  <gazebo>
+    <static>false</static>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/rk</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+  </gazebo>
+
+  <transmission name="rp_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="rotating_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="rp_motor">
+      <hardwareInterface>hardware_interface/PositioinJointInterface</hardwareInterface>
+      <mechanicalReducction>1</mechanicalReducction>
+    </actuator>
+  </transmission>
+
+</robot>

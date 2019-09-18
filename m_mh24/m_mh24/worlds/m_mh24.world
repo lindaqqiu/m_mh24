@@ -1,0 +1,763 @@
+<sdf version='1.6'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose frame=''>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <audio>
+      <device>default</device>
+    </audio>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='robot'>
+      <link name='00_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0.065195 -0.001111 0.082012 0 -0 0</pose>
+          <mass>153</mass>
+          <inertia>
+            <ixx>1.9849</ixx>
+            <ixy>0.00410476</ixy>
+            <ixz>0.106688</ixz>
+            <iyy>3.6118</iyy>
+            <iyz>0.0107423</iyz>
+            <izz>4.99307</izz>
+          </inertia>
+        </inertial>
+        <collision name='00_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lindaqqiu/catkin_ws/src/m_mh24/m_mh24/meshes/base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='00_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lindaqqiu/catkin_ws/src/m_mh24/m_mh24/meshes/base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/DarkGray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='world_base_joint' type='fixed'>
+        <child>00_link</child>
+        <parent>world</parent>
+      </joint>
+      <link name='01_link'>
+        <pose frame=''>-0.00549 0.019704 0.62959 0 0 -0.16856</pose>
+        <inertial>
+          <pose frame=''>0.030829 -0.066527 -0.287659 0 -0 0</pose>
+          <mass>211</mass>
+          <inertia>
+            <ixx>7.05702</ixx>
+            <ixy>0.34612</ixy>
+            <ixz>-2.07855</ixz>
+            <iyy>8.19838</iyy>
+            <iyz>0.617834</iyz>
+            <izz>5.60235</izz>
+          </inertia>
+        </inertial>
+        <collision name='01_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lindaqqiu/catkin_ws/src/m_mh24/m_mh24/meshes/01_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='01_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lindaqqiu/catkin_ws/src/m_mh24/m_mh24/meshes/01_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Green</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>1</kinematic>
+      </link>
+      <joint name='s_joint' type='revolute'>
+        <child>01_link</child>
+        <parent>00_link</parent>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-3.14</lower>
+            <upper>3.14</upper>
+            <effort>1000</effort>
+            <velocity>3</velocity>
+          </limit>
+          <dynamics>
+            <damping>15</damping>
+            <friction>1000</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='02_link'>
+        <pose frame=''>0.171318 -0.010384 0.62959 1.5708 -1.5425 -0.16856</pose>
+        <inertial>
+          <pose frame=''>0.30555 0.010888 0.19203 0 -0 0</pose>
+          <mass>75</mass>
+          <inertia>
+            <ixx>0.28879</ixx>
+            <ixy>-0.087944</ixy>
+            <ixz>-0.13623</ixz>
+            <iyy>4.632</iyy>
+            <iyz>-0.023922</iyz>
+            <izz>4.7157</izz>
+          </inertia>
+        </inertial>
+        <collision name='02_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lindaqqiu/catkin_ws/src/m_mh24/m_mh24/meshes/02_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='02_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lindaqqiu/catkin_ws/src/m_mh24/m_mh24/meshes/02_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Blue</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='l_joint' type='revolute'>
+        <child>02_link</child>
+        <parent>01_link</parent>
+        <axis>
+          <xyz>-0.167759 -0.985828 -0</xyz>
+          <limit>
+            <lower>-1.57</lower>
+            <upper>1.57</upper>
+            <effort>1000</effort>
+            <velocity>4</velocity>
+          </limit>
+          <dynamics>
+            <damping>150</damping>
+            <friction>1000</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='03_link'>
+        <pose frame=''>0.192516 -0.013992 1.38929 1.5708 -1.53764 -0.168559</pose>
+        <inertial>
+          <pose frame=''>0.10481 -0.11408 0.08096 0 -0 0</pose>
+          <mass>61</mass>
+          <inertia>
+            <ixx>0.84029</ixx>
+            <ixy>0.41541</ixy>
+            <ixz>-0.099597</ixz>
+            <iyy>0.72625</iyy>
+            <iyz>0.037172</iyz>
+            <izz>1.1592</izz>
+          </inertia>
+        </inertial>
+        <collision name='03_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lindaqqiu/catkin_ws/src/m_mh24/m_mh24/meshes/03_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='03_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lindaqqiu/catkin_ws/src/m_mh24/m_mh24/meshes/03_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/SkyBlue</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>1</kinematic>
+      </link>
+      <joint name='u_joint' type='revolute'>
+        <child>03_link</child>
+        <parent>02_link</parent>
+        <axis>
+          <xyz>-0.167759 -0.985828 -0</xyz>
+          <limit>
+            <lower>-1.57</lower>
+            <upper>1.57</upper>
+            <effort>1000</effort>
+            <velocity>5</velocity>
+          </limit>
+          <dynamics>
+            <damping>150</damping>
+            <friction>1000</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='04_link'>
+        <pose frame=''>0.18949 -0.071296 1.58918 -1.84849 1.44954 -2.01511</pose>
+        <inertial>
+          <pose frame=''>-0.040037 0.001829 0.546518 0 -0 0</pose>
+          <mass>30</mass>
+          <inertia>
+            <ixx>0.78</ixx>
+            <ixy>0</ixy>
+            <ixz>-0.03</ixz>
+            <iyy>0.78</iyy>
+            <iyz>0</iyz>
+            <izz>0.22</izz>
+          </inertia>
+        </inertial>
+        <collision name='04_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lindaqqiu/catkin_ws/src/m_mh24/m_mh24/meshes/04_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='04_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lindaqqiu/catkin_ws/src/m_mh24/m_mh24/meshes/04_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Yellow</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>1</kinematic>
+      </link>
+      <joint name='r_joint' type='revolute'>
+        <child>04_link</child>
+        <parent>03_link</parent>
+        <axis>
+          <xyz>0.985286 -0.167663 -0.033159</xyz>
+          <limit>
+            <lower>-3.14</lower>
+            <upper>3.14</upper>
+            <effort>1000</effort>
+            <velocity>5</velocity>
+          </limit>
+          <dynamics>
+            <damping>150</damping>
+            <friction>1000</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='05_link'>
+        <pose frame=''>1.0546 -0.21851 1.55564 0.24643 -1.45057 1.15798</pose>
+        <inertial>
+          <pose frame=''>8e-06 -0.030093 -0.006477 0 -0 0</pose>
+          <mass>15</mass>
+          <inertia>
+            <ixx>0.027316</ixx>
+            <ixy>6.5034e-06</ixy>
+            <ixz>2.0266e-05</ixz>
+            <iyy>0.028339</iyy>
+            <iyz>0.00032343</iyz>
+            <izz>0.037473</izz>
+          </inertia>
+        </inertial>
+        <collision name='05_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lindaqqiu/catkin_ws/src/m_mh24/m_mh24/meshes/05_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='05_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lindaqqiu/catkin_ws/src/m_mh24/m_mh24/meshes/05_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Orange</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>1</kinematic>
+      </link>
+      <joint name='b_joint' type='revolute'>
+        <child>05_link</child>
+        <parent>04_link</parent>
+        <axis>
+          <xyz>-0.162815 -0.979777 0.116314</xyz>
+          <limit>
+            <lower>-1.57</lower>
+            <upper>1.57</upper>
+            <effort>1000</effort>
+            <velocity>5</velocity>
+          </limit>
+          <dynamics>
+            <damping>150</damping>
+            <friction>1000</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='06_link'>
+        <pose frame=''>1.05099 -0.240276 1.55822 -1.60025 -0.116574 -1.73547</pose>
+        <inertial>
+          <pose frame=''>-1.6e-05 3.2e-05 0.27545 0 -0 0</pose>
+          <mass>5</mass>
+          <inertia>
+            <ixx>0.15671</ixx>
+            <ixy>2.9611e-07</ixy>
+            <ixz>-3.1275e-05</ixz>
+            <iyy>0.1567</iyy>
+            <iyz>2.6481e-05</iyz>
+            <izz>0.042049</izz>
+          </inertia>
+        </inertial>
+        <collision name='06_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lindaqqiu/catkin_ws/src/m_mh24/m_mh24/meshes/06_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='06_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lindaqqiu/catkin_ws/src/m_mh24/m_mh24/meshes/06_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>1</kinematic>
+      </link>
+      <joint name='t_joint' type='revolute'>
+        <child>06_link</child>
+        <parent>05_link</parent>
+        <axis>
+          <xyz>0.985483 -0.167236 -0.029254</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <damping>150</damping>
+            <friction>1000</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <static>0</static>
+      <plugin name='gazebo_ros_control' filename='libgazebo_ros_control.so'>
+        <robotNamespace>/m_mh24</robotNamespace>
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      </plugin>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+    </model>
+    <model name='workpiece'>
+      <link name='workpiece'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0.5 0 0 -0 0</pose>
+          <mass>500</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='workpiece_collision'>
+          <pose frame=''>0 -0.5 0 0 -0 1.57</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lindaqqiu/catkin_ws/src/m_mh24/m_mh24/meshes/drawer.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='workpiece_visual'>
+          <pose frame=''>0 -0.5 0 0 -0 1.57</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/lindaqqiu/catkin_ws/src/m_mh24/m_mh24/meshes/drawer.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='world_workbench_joint' type='fixed'>
+        <child>workpiece</child>
+        <parent>world</parent>
+      </joint>
+      <pose frame=''>2.1 0 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>35 199000000</sim_time>
+      <real_time>52 40611390</real_time>
+      <wall_time>1564571658 611943330</wall_time>
+      <iterations>35199</iterations>
+      <model name='ground_plane'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='robot'>
+        <pose frame=''>-1.2e-05 4.2e-05 -6e-06 -3.5e-05 4e-06 -9.7e-05</pose>
+        <scale>1 1 1</scale>
+        <link name='00_link'>
+          <pose frame=''>-1.2e-05 4.2e-05 -6e-06 -3.5e-05 4e-06 -9.7e-05</pose>
+          <velocity>-3.9e-05 -4.5e-05 -0.004313 -0.046751 -0.017742 0.000146</velocity>
+          <acceleration>-1.57815 6.00245 -2.40155 -1.42131 -0.896227 -1.47994</acceleration>
+          <wrench>-241.458 918.375 -367.438 0 -0 0</wrench>
+        </link>
+        <link name='01_link'>
+          <pose frame=''>-0.004822 0.016439 0.629957 0.001946 0.001119 -0.172858</pose>
+          <velocity>1.4e-05 -7.1e-05 8e-06 4.6e-05 1.7e-05 -4.5e-05</velocity>
+          <acceleration>0 0 -9.8 -1.83609 1.151 -2.94472</acceleration>
+          <wrench>0 0 -2067.8 0 -0 0</wrench>
+        </link>
+        <link name='02_link'>
+          <pose frame=''>0.173454 -0.013294 0.63062 1.63622 -1.5285 -0.239974</pose>
+          <velocity>0.000168 -7.4e-05 2.2e-05 -2e-05 -0.000485 0.000239</velocity>
+          <acceleration>-0.00046 0.000296 1e-05 0.220544 1.02253 0.992488</acceleration>
+          <wrench>-0.034534 0.022188 0.000768 0 -0 0</wrench>
+        </link>
+        <link name='03_link'>
+          <pose frame=''>0.204974 -0.020202 1.3894 1.55956 -1.51045 -0.158118</pose>
+          <velocity>0.000144 -0.000103 7e-06 3.8e-05 0.000307 3.1e-05</velocity>
+          <acceleration>0 0 -9.8 -0.818555 1.4972 0.085539</acceleration>
+          <wrench>0 0 -597.8 0 -0 0</wrench>
+        </link>
+        <link name='04_link'>
+          <pose frame=''>0.207323 -0.077469 1.58946 -2.00194 1.42641 -2.16655</pose>
+          <velocity>0.000209 -9.2e-05 1.2e-05 -5.9e-05 0.00032 5.4e-05</velocity>
+          <acceleration>0 0 -9.8 -0.700466 0.547706 -2.74844</acceleration>
+          <wrench>0 0 -294 0 -0 0</wrench>
+        </link>
+        <link name='05_link'>
+          <pose frame=''>1.07124 -0.224442 1.53232 0.394535 -1.42876 1.01219</pose>
+          <velocity>0.0002 -4.7e-05 -0.000254 -5.4e-05 0.000345 5.4e-05</velocity>
+          <acceleration>0 0 -9.8 0.102559 1.18644 1.86169</acceleration>
+          <wrench>0 0 -147 0 -0 0</wrench>
+        </link>
+        <link name='06_link'>
+          <pose frame=''>1.06774 -0.246154 1.53528 -1.62518 -0.124091 -1.73199</pose>
+          <velocity>0.000203 -4.6e-05 -0.00025 -6.6e-05 0.000337 4.8e-05</velocity>
+          <acceleration>0 0 -9.8 2.72602 1.49802 -0.105269</acceleration>
+          <wrench>0 0 -49 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='workpiece'>
+        <pose frame=''>2.1 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='workpiece'>
+          <pose frame=''>2.1 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 -0 0 -0 0</acceleration>
+          <wrench>0 0 -0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose frame=''>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>2.05429 -4.21522 2.71106 -0 0.363643 1.70019</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>

@@ -1,0 +1,11 @@
+controller_list:
+  - name: fake_arm_controller
+    joints:
+      - s_joint
+      - l_joint
+      - u_joint
+      - r_joint
+      - b_joint
+  - name: fake_end_controller
+    joints:
+      - t_joint

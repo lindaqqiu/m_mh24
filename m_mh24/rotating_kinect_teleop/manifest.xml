@@ -1,0 +1,18 @@
+<package>
+  <description brief="rotating_kinect_teleop">
+
+     rotating_kinect_teleop
+
+  </description>
+  <author>Lindaqqiu</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/rotating_kinect_teleop</url>
+  <depend package="rospy"/>
+  <depend package="geometry_msgs"/>
+  <depend package="std_msgs"/>
+  <depend package="roscpp"/>
+
+</package>
+
+

@@ -1,0 +1,14 @@
+rk:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  rotating_joint_controller:
+    type: position_controllers/JointPositionController
+    joint: rotating_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  gazebo_ros_control:
+    pid_gains:
+      rotating_joint: {p: 100.0, i: 0.0, d: 1.0}
+ 

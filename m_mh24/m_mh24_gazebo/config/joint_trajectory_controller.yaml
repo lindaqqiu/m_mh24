@@ -1,0 +1,52 @@
+m_mh24:
+  arm_trajectory_controller:
+    type: "position_controllers/JointTrajectoryController"
+    joints:
+     - s_joint
+     - l_joint
+     - u_joint
+     - r_joint
+     - b_joint
+    gains:
+      s_joint:
+        p: 100
+        d: 1
+        i: 1
+        i_clamp: 1
+      l_joint:
+        p: 100
+        d: 1
+        i: 1
+        i_clamp: 1
+      u_joint:
+        p: 100
+        d: 1
+        i: 1
+        i_clamp: 1
+      r_joint:
+        p: 100
+        d: 1
+        i: 1
+        i_clamp: 1
+      b_joint:
+        p: 100
+        d: 1
+        i: 1
+        i_clamp: 1
+      t_joint:
+        p: 100
+        d: 1
+        i: 1
+        i_clamp: 1
+    constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.05
+      s_joint: {trajectory: 0.1, goal: 0.1}
+      l_joint: {trajectory: 0.1, goal: 0.1}
+      u_joint: {trajectory: 0.1, goal: 0.1}
+      r_joint: {trajectory: 0.1, goal: 0.1}
+      b_joint: {trajectory: 0.1, goal: 0.1}
+      t_joint: {trajectory: 0.1, goal: 0.1}
+    stop_trajectory_duration: 0.5
+    state_publish_rate:  25
+    action_monitor_rate: 10

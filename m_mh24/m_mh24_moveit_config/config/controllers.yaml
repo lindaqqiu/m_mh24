@@ -1,0 +1,14 @@
+controller_manager_ns: controller_manager
+#action namespace: name/action_ns
+controller_list:
+ - name: m_mh24/arm_trajectory_controller
+   action_ns: follow_joint_trajectory
+   type: FollowJointTrajectory
+   default: true
+   joints:
+    - s_joint
+    - l_joint
+    - u_joint
+    - r_joint
+    - b_joint
+    - t_joint

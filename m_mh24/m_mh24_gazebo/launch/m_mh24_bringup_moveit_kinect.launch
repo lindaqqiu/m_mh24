@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+  
+  <!-- startup simulate world with the robot and workpiece and kinect -->
+  <include file="$(find m_mh24)/launch/m_mh24_gazebo_with_workpiece_kinect.launch" />
+
+  <!-- load moveit controller and ros controllers -->
+  <include file="$(find m_mh24_moveit_config)/launch/m_mh24_moveit_controller_manager.launch" />
+
+  <!-- launch moveit -->
+  <include file="$(find m_mh24_moveit_config)/launch/moveit_planning_execution.launch"/>
+
+  <!-- launch rviz -->
+  <include file="$(find m_mh24_moveit_config)/launch/moveit_rviz.launch">
+    <param name="config" value="true"/>
+  </include>
+
+  <!-- I'm not going to use this node anymore, because I found out in the TF tree, the links from different urdf can be used by each other, as long as they have been published by the "robot_states_publisher",so I use the same link name "world" in both urdf -->
+  <!-- publish the transform matrix between the robot world link and the kinect world link 
+       args="x y z qx qy qz qw frame_id child_frame_id  period_in_ms"-->
+  <!--node pkg="tf" type="static_transform_publisher" name="kinect_tansform" args="0.55 0 0.1 0 0 0 world rk/world 100"/-->
+
+</launch>

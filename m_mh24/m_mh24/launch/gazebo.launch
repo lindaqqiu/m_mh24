@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="paused" default="true"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  <arg name="pipeline" default="ompl" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="$(arg paused)"/>
+    <!--arg name="world_name" value="$(find m_mh24)/worlds/m_mh24.world"/-->
+  </include>
+
+  <!--node
+    name="tf_footprint_base"
+    pkg="tf"
+    type="static_transform_publisher"
+    args="0 0 0 0 0 0 world base_footprint 40" /-->
+
+  <!-- send robot urdf to param server -->
+  <include file="$(find m_mh24)/launch/m_mh24_upload.launch"/>
+
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node 
+    name="spawn_gazebo_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-urdf -param robot_description -model robot"
+    respawn="false"
+    output="screen" />
+
+  <!--node
+    name="fake_joint_calibration"
+    pkg="rostopic"
+    type="rostopic"
+    args="pub /calibrated std_msgs/Bool true" /-->
+
+  <!-- set pid parameters in gazebo_ros_controller-->
+  <rosparam ns="/m_mh24" command="load" file="$(find m_mh24)/config/gazebo_pid_gains.yaml" /> 
+</launch>

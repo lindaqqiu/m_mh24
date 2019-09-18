@@ -1,0 +1,1 @@
+controller_joint_names: ['world_base_joint','base_joint','s_joint', 'l_joint', 'u_joint', 'r_joint', 'b_joint', 't_joint']

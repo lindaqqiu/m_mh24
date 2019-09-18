@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="m_mh24">
+  <material name="DarkGrey">
+    <color rgba="0.3 0.3 0.3 1.0"/>
+  </material>
+  <material name="Red">
+    <color rgba="0.3 0.3 0.3 1.0"/>
+  </material>
+  <material name="Black">
+    <color rgba="0 0 0 1.0"/>
+  </material>
+  <material name="Orange">
+    <color rgba="1.0 0.487 0 1.0"/>
+  </material>
+  <material name="Silver">
+    <color rgba="1.0 1.0 1.0 1.0"/>
+  </material>
+  <material name="Grey">
+    <color rgba="0.7 0.7 0.7 1.0"/>
+  </material>
+  <material name="Blue">
+    <color rgba="0.0 0.0 0.8 1.0"/>
+  </material>
+  <material name="HandGray">
+    <color rgba="0.953 0.996 0.694 1.0"/>
+  </material>
+  <material name="SickBlue">
+    <color rgba="0.3058 0.5921 0.7294 1.0"/>
+  </material>
+
+  <!--links-->
+  <link name="world"/>
+  <!--link name="base_link">
+    <visual>
+      <geometry>
+        <box size="2.0 2.0 0.5"/>
+      </geometry>
+      <origin xyz="0 0 0.25" rpy="0 0 0" />
+    </visual>
+    <collision>
+      <geometry>
+        <box size="2.0 2.0 0.5"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.25" rpy="0 0 0" />
+      <mass value="1000000" />
+      <inertia
+        ixx="0.3333"
+        ixy="0"
+        ixz="0"
+        iyy="0.3333"
+        iyz="0"
+        izz="0.6667" />
+    </inertial>
+  </link-->
+
+  <link name="00_link">
+    <inertial>
+      <origin
+        xyz="0.0651952757401018 -0.00111135577866065 0.0820117972141799"
+        rpy="0 0 0" />
+      <mass value="3" />
+      <inertia
+        ixx="1.9849048937555"
+        ixy="0.00410475564409846"
+        ixz="0.106687639386624"
+        iyy="3.61179659152104"
+        iyz="0.0107423198174343"
+        izz="4.99307347614783" />
+    </inertial> 
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://m_mh24/meshes/base_link.STL" />
+      </geometry>
+      <material name="Black"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://m_mh24/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <link name="01_link">
+    <inertial>
+      <origin
+        xyz="0.0308290895792583 -0.0665272075983443 -0.287659445007901"
+        rpy="0 0 0" />
+      <mass
+        value="1" />
+      <inertia
+        ixx="7.0570238993476"
+        ixy="0.34612000331407"
+        ixz="-2.07854712803038"
+        iyy="8.19837913245963"
+        iyz="0.617833628638447"
+        izz="5.60234822335053" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://m_mh24/meshes/01_link.STL" />
+      </geometry>
+      <material name="DarkGrey"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://m_mh24/meshes/01_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <link name="02_link">
+    <inertial>
+      <origin
+        xyz="0.30555 0.010888 0.19203"
+        rpy="0 0 0" />
+      <mass value="0.9" />
+      <inertia
+        ixx="0.28879"
+        ixy="-0.087944"
+        ixz="-0.13623"
+        iyy="4.632"
+        iyz="-0.023922"
+        izz="4.7157" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://m_mh24/meshes/02_link.STL" />
+      </geometry>
+      <material name="Blue"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://m_mh24/meshes/02_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <link name="03_link">
+    <inertial>
+      <origin
+        xyz="0.10481 -0.11408 0.08096"
+        rpy="0 0 0" />
+      <mass value="0.7" />
+      <inertia
+        ixx="0.84029"
+        ixy="0.41541"
+        ixz="-0.099597"
+        iyy="0.72625"
+        iyz="0.037172"
+        izz="1.1592" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://m_mh24/meshes/03_link.STL" />
+      </geometry>
+      <material name="SickBlue"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://m_mh24/meshes/03_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="04_link">
+    <inertial>
+      <origin
+        xyz="-0.0400367957302592 0.00182880599133015 0.546518360643415"
+        rpy="0 0 0" />
+      <mass value="0.5" />
+      <inertia
+        ixx="0.78"
+        ixy="0.00"
+        ixz="-0.03"
+        iyy="0.78"
+        iyz="0.00"
+        izz="0.22" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://m_mh24/meshes/04_link.STL" />
+      </geometry>
+      <material name="Orange"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://m_mh24/meshes/04_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="05_link">
+    <inertial>
+      <origin
+        xyz="7.8699E-06 -0.030093 -0.0064769"
+        rpy="0 0 0" />
+      <mass value="0.3" />
+      <inertia
+        ixx="0.027316"
+        ixy="6.5034E-06"
+        ixz="2.0266E-05"
+        iyy="0.028339"
+        iyz="0.00032343"
+        izz="0.037473" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://m_mh24/meshes/05_link.STL" />
+      </geometry>
+      <material name="Red"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://m_mh24/meshes/05_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="06_link">
+    <inertial>
+      <origin
+        xyz="-1.5601E-05 3.1533E-05 0.27545"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="0.15671"
+        ixy="2.9611E-07"
+        ixz="-3.1275E-05"
+        iyy="0.1567"
+        iyz="2.6481E-05"
+        izz="0.042049" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://m_mh24/meshes/06_link.STL" />
+      </geometry>
+      <material name="Silver"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://m_mh24/meshes/06_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- joints-->
+
+  <joint name="world_base_joint" type="fixed">
+    <parent link="world"/>
+    <child link="00_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="s_joint" type="revolute">
+    <origin
+      xyz="-0.00549 0.019704 0.62959"
+      rpy="0 0 -0.16856" />
+    <parent link="00_link" />
+    <child link="01_link" />
+    <axis xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="1000"
+      velocity="3" />
+    <dynamics
+      damping="1" 
+      friction="30"/>
+  </joint>
+
+  <joint name="l_joint" type="revolute">
+    <origin
+      xyz="0.17935 0 0"
+      rpy="1.5708 -1.5425 0" />
+    <parent link="01_link" />
+    <child link="02_link" />
+    <axis xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="1000"
+      velocity="4" />
+    <dynamics
+      damping="1" 
+      friction="55"/>
+  </joint>
+
+  <joint name="u_joint" type="revolute">
+    <origin
+      xyz="0.760000000000005 0 0"
+      rpy="0 0 -0.00486097653808946" />
+    <parent link="02_link" />
+    <child link="03_link" />
+    <axis xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="1000"
+      velocity="5" />
+    <dynamics
+      damping="1" 
+      friction="40"/>
+  </joint>
+
+  <joint name="r_joint" type="revolute">
+    <origin
+      xyz="0.2 0 0.057"
+      rpy="-1.5708 -0.11665 -3.1416" />
+    <parent link="03_link" />
+    <child link="04_link" />
+    <axis xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="1000"
+      velocity="5" />
+    <dynamics
+      damping="1" 
+      friction="10"/>
+  </joint>
+
+  <joint name="b_joint" type="revolute">
+    <origin
+      xyz="0.0043913 0.00051459 0.87818"
+      rpy="-1.5708 0.0039292 3.1416" />
+    <parent link="04_link" />
+    <child link="05_link" />
+    <axis xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="1000"
+      velocity="5" />
+    <dynamics
+      damping="1" 
+      friction="10"/>
+  </joint>
+
+  <joint name="t_joint" type="continuous">
+    <origin
+      xyz="0 0 0.022215"
+      rpy="1.5708 -1.5708 0" />
+    <parent link="05_link" />
+    <child link="06_link" />
+    <axis xyz="0 0 1" />
+    <limit
+      effort="1000"
+      velocity="5" />
+    <dynamics
+      damping="1" 
+      friction="5"/>
+  </joint>
+
+  <!-- gazebo -->
+  <gazebo reference="00_link">
+    <material>Gazebo/DarkGray</material>
+  </gazebo>
+  <gazebo reference="01_link">
+    <material>Gazebo/Green</material>
+  </gazebo>
+  <gazebo reference="02_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="03_link">
+    <material>Gazebo/SkyBlue</material>
+  </gazebo>
+  <gazebo reference="04_link">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+  <gazebo reference="05_link">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+  <gazebo reference="06_link">
+    <material>Gazebo/Red</material>
+  </gazebo>
+  
+<!-- plugin -->
+  <gazebo>
+    <static>false</static>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/m_mh24</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+  </gazebo>
+
+  <!--imu sensor -->
+  <gazebo reference="06_link">
+    <gravity>true</gravity>
+    <sensor name="06_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <topic>__default_topic__</topic>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <topicName>imu</topicName>
+        <bodyName>06_link</bodyName>
+        <updateRateHZ>10.0</updateRateHZ>
+        <gaussianNoise>0.0</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>world</frameName>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
+  </gazebo>
+
+  <!--TorqurForce sensor-->
+  <gazebo reference="s_joint">
+    <provideFeedback>true</provideFeedback>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="ft_sensor" filename="libgazebo_ros_ft_sensor.so">
+      <updateRate>100.0</updateRate>
+      <topicName>m_mh24/ft_sensor/s_joint</topicName>
+      <jointName>s_joint</jointName>
+    </plugin>
+  </gazebo>
+
+  <gazebo reference="l_joint">
+    <provideFeedback>true</provideFeedback>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="ft_sensor" filename="libgazebo_ros_ft_sensor.so">
+      <updateRate>100.0</updateRate>
+      <topicName>m_mh24/ft_sensor/l_joint</topicName>
+      <jointName>l_joint</jointName>
+    </plugin>
+  </gazebo>
+
+  <gazebo reference="u_joint">
+    <provideFeedback>true</provideFeedback>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="ft_sensor" filename="libgazebo_ros_ft_sensor.so">
+      <updateRate>100.0</updateRate>
+      <topicName>m_mh24/ft_sensor/u_joint</topicName>
+      <jointName>u_joint</jointName>
+    </plugin>
+  </gazebo>
+
+  <gazebo reference="r_jonit">
+    <provideFeedback>true</provideFeedback>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="ft_sensor" filename="libgazebo_ros_ft_sensor.so">
+    <updateRate>100.0</updateRate>
+    <topicName>m_mh24/ft_sensor/r_joint</topicName>
+    <jointName>r_joint</jointName>
+    </plugin>
+  </gazebo>
+
+  <gazebo reference="b_joint">
+    <provideFeedback>true</provideFeedback>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="ft_sensor" filename="libgazebo_ros_ft_sensor.so">
+    <updateRate>100.0</updateRate>
+    <topicName>m_mh24/ft_sensor/b_joint</topicName>
+    <jointName>b_joint</jointName>
+    </plugin>
+  </gazebo>
+
+  <gazebo reference="t_joint">
+    <provideFeedback>true</provideFeedback>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="ft_sensor" filename="libgazebo_ros_ft_sensor.so">
+      <updateRate>100.0</updateRate>
+      <topicName>m_mh24/ft_sensor/t_joint</topicName>
+      <jointName>t_joint</jointName>
+    </plugin>
+  </gazebo>
+
+
+<!--transmission-->
+  <transmission name="s_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="s_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="s_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReducction>1</mechanicalReducction>
+    </actuator>
+  </transmission>
+  <transmission name="l_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="l_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="l_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>      
+      <mechanicalReducction>1</mechanicalReducction>
+    </actuator>
+  </transmission>
+  <transmission name="u_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="u_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="u_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReducction>1</mechanicalReducction>
+    </actuator>
+  </transmission>
+  <transmission name="r_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="r_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="r_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReducction>1</mechanicalReducction>
+    </actuator>
+  </transmission>
+  <transmission name="b_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="b_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="b_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReducction>1</mechanicalReducction>
+    </actuator>
+  </transmission>
+  <transmission name="t_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="t_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="t_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReducction>1</mechanicalReducction>
+    </actuator>
+  </transmission>
+</robot>
+

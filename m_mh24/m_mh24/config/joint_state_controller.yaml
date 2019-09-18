@@ -1,0 +1,21 @@
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+arm_position_controller:
+  type: position_controllers/JointGroupPositionController
+  joints: 
+   - s_joint
+   - l_joint
+   - u_joint
+   - r_joint
+   - b_joint
+   - t_joint
+  pid_gains: 
+    s_joint: {p: 100.0, i: 0.01, d: 10.0}
+    l_joint: {p: 100.0, i: 0.01, d: 10.0}
+    u_joint: {p: 100.0, i: 0.01, d: 10.0}
+    r_joint: {p: 100.0, i: 0.01, d: 10.0}
+    b_joint: {p: 100.0, i: 0.01, d: 10.0}
+    t_joint: {p: 100.0, i: 0.01, d: 10.0}
+
+

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find m_mh24)/launch/m_mh24_gazebo_with_workpiece.launch"/>
+  <group ns="rk">
+  <!-- spawn robot in gazebo -->
+    <param name="robot_description" command="$(find xacro)/xacro.py $(find m_mh24)/urdf/rotating_kinect.urdf.xacro" />
+
+    <rosparam file="$(find m_mh24)/config/rotating_kinect_control.yaml" command="load"/>
+
+    <node
+      name="spawn_rk_model"
+      pkg="gazebo_ros"
+      type="spawn_model"
+      args="-urdf -param /rk/robot_description -model rotating_kinect"
+      respawn="false"
+      output="screen" />
+
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+      <param name="publish_frequency" type="double" value="50.0" />
+    </node>
+
+    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher">
+      <param name="use_gui" value="true"/>
+    </node>
+  </group>
+</launch>
