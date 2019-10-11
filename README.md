@@ -1,7 +1,7 @@
 # m_mh24
 A  basic 6-DOF manipulator simulation platform using ROS-Gazebo-Moveit. (for completely beginners)
 
-![Image text](https://github.com/lindaqqiu/m_mh24/blob/master/m_mh24/image/moveit.png）
+![Image text](https://github.com/lindaqqiu/m_mh24/blob/master/m_mh24/image/moveit.png)  
   
 >[The BaiduYun address of the demo video](https://pan.baidu.com/s/1WJx3cYXOpdEbxMX0lzY93A)
 >code:216l
